@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AnswerButton extends StatelessWidget {
   const AnswerButton({required this.answer,required this.onTap,super.key});
@@ -23,7 +24,7 @@ class AnswerButton extends StatelessWidget {
           onPressed: onTap,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(90, 40, 90, 40),
-            child: Text(answer),
+            child: Text(answer,textAlign: TextAlign.center, style: GoogleFonts.openSans(fontWeight: FontWeight.w300, fontSize: 17),),
           )),
     );
   }
