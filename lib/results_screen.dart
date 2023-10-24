@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 import 'package:quiz_app/start_screen_background.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key, required this.chosenAnswers,});
-
+  const ResultsScreen({super.key, required this.chosenAnswers,required this.onRestart});
+  final void Function() onRestart;
   final List<String> chosenAnswers;
 
   List<Map<String, Object>> getSummaryData() {
@@ -32,7 +33,7 @@ class ResultsScreen extends StatelessWidget {
     }).length;
 
     return SizedBox(
-      width: double.infinity,
+
       child: Background(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,14 +47,21 @@ class ResultsScreen extends StatelessWidget {
               height: 30,
             ),
 
-            ElevatedButton(style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(0, 0, 0, 0)
-            ) ,onPressed: (() {}), child: Row(
-              children: [
-                Text('Restart', style: TextStyle(fontSize: 18, color: Colors.white),),
-                Icon(Icons.restart_alt_rounded, )
-              ],
-            ))
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 140),
+                child: ElevatedButton(style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(0, 0, 0, 0),
+
+                ) ,onPressed: (onRestart), child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Restart', style: GoogleFonts.openSans(fontSize: 18, color: Colors.white, fontStyle: FontStyle.italic),),
+                    Icon(Icons.restart_alt_rounded, weight: 10,)
+                  ],
+                )),
+              ),
+            )
           ],
         ),
       ),
